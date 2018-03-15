@@ -2,12 +2,11 @@
 #define __BOARD_H__
 //#include "tile.h"
 #include <vector>
+#include "piece.h"
 
 const int boardHeight = 5;
 const int boardWidth = 5;
 const int thronePos = 2;
-
-enum TileObject {empty, redPawn, redKing, bluePawn, blueKing};
 
 class Board {
  	static Board *_instance;
@@ -15,8 +14,9 @@ class Board {
 	Board(Board const&);
 	void operator=(Board const&);
 
-	TileObject tiles[boardHeight][boardWidth]; //change this, eventually
-	
+	Piece *tiles[boardHeight][boardWidth]; 
+	Piece *redPieces[boardWidth];
+	Piece *bluePieces[boardWidth];
 
 	public:	
 	static Board *getInstance() {
@@ -27,7 +27,8 @@ class Board {
 	}
 
 	void move_piece(int initRow, int initCol, int endRow, int endCol);
-	TileObject get_tile_object(int row, int col);	
+	Piece *get_tile_object(int row, int col);	
+	void print_board();
 };
 
 
