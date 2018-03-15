@@ -1,5 +1,7 @@
 #include "board.h"
+#include <iostream>
 
+Board *Board::_instance = 0;
 
 //constructor sets up the board to the starting game position
 Board::Board() {
@@ -27,9 +29,10 @@ TileObject Board::get_tile_object(int row, int col) {
 //checked in the player move functions
 void Board::move_piece(int initrow, int initcol, int endrow, int endcol) {
 	if (tiles[initrow][initcol]==empty) {
-		cerr << "Attempting to move from an empty location" << endl;	
+		std::cout << "Attempting to move from an empty location" << std::endl;	
 	} else {
 		tiles[endrow][endcol] = tiles[initrow][initcol];
 		tiles[initrow][initcol] = empty;
 	}
 }
+
