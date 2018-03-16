@@ -30,14 +30,14 @@ Piece *Board::get_tile_object(int row, int col) {
 
 //Function to move pieces, does not do checking that you are moving your own pieces, which should be
 //checked in the player move functions
-void Board::move_piece(int initrow, int initcol, int endrow, int endcol) {
+void Board::move_piece(int initrow, int initcol, int deltax, int deltay) {
 	if (tiles[initrow][initcol]==0) {
 		std::cout << "Attempting to move from an empty location" << std::endl;	
 	} else {
-		tiles[endrow][endcol] = tiles[initrow][initcol];
+		tiles[initrow+deltax][initcol+deltay] = tiles[initrow][initcol];
 		tiles[initrow][initcol] = 0;
-		tiles[endrow][endcol]->set_posx(endrow);
-		tiles[endrow][endcol]->set_posy(endcol);
+		tiles[initrow+deltax][initcol+deltay]->set_posx(initrow+deltax);
+		tiles[initrow+deltax][initcol+deltay]->set_posy(initcol+deltay);
 	}
 }
 
