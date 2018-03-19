@@ -5,6 +5,13 @@
 #include <vector>
 using namespace std;
 
+int numCards = 16;
+
+//All cards should be here or they cannot be played
+Card cardList [numCards] = {"mantis", "ox", "goose", "eel", "crane", "cobra", "rooster", "elephant", "crab", "monkey", "rabbit", "tiger", "frog", "horse", "boar", "dragon"};
+	
+
+
 //make this less terrible some time
 struct Pos {
 	int x;
