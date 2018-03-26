@@ -5,12 +5,10 @@
 #include <vector>
 using namespace std;
 
-int numCards = 16;
+const int numCards = 16;
 
-//All cards should be here or they cannot be played
-Card cardList [numCards] = {"mantis", "ox", "goose", "eel", "crane", "cobra", "rooster", "elephant", "crab", "monkey", "rabbit", "tiger", "frog", "horse", "boar", "dragon"};
-	
-
+//Note: this value MUST be odd
+const int cardsPerGame = 5;
 
 //make this less terrible some time
 struct Pos {
@@ -30,4 +28,7 @@ class Card {
 	vector <Pos>* getAvailableMoves();
 	bool getColor();
 };
+
+//Where all the cards will be listed
+extern string cardList[numCards];
 #endif

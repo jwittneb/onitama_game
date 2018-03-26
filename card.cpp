@@ -2,6 +2,9 @@
 #include <iostream>
 using namespace std;
 
+//All cards should be here or they cannot be played
+string cardList[numCards] = {"mantis", "ox", "goose", "eel", "crane", "cobra", "rooster", "elephant", "crab", "monkey", "rabbit", "tiger", "frog", "horse", "boar", "dragon"};
+
 Card::Card(std::string cardName) {
 	name = cardName;
 	vector <Pos> cardMoves;
