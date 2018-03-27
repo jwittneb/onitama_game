@@ -24,7 +24,7 @@ Board::Board() {
 	}
 }
 
-Piece *Board::get_tile_object(int row, int col) {
+Piece *Board::getTileObject(int row, int col) {
 	return tiles[row][col];
 }
 
@@ -50,7 +50,7 @@ void Board::move_piece(int initrow, int initcol, int deltax, int deltay) {
 void Board::print_board() {
 	for (int i=0; i<boardHeight; ++i) {
 		for (int j=0; j<boardWidth; ++j) {
-			Piece *toPrint = get_tile_object(i,j);
+			Piece *toPrint = getTileObject(i,j);
 			if (toPrint == 0) {
 				std::cout << 0;
 			} else {

@@ -16,7 +16,7 @@ bool Piece::is_king() {
 	return isKing;
 }
 
-bool Piece::get_alignment() {
+bool Piece::getAlignment() {
 	return alignment;
 }
 

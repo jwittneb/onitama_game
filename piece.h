@@ -11,7 +11,7 @@ class Piece {
 	//move should take in a cord+movement
 	void move_piece(int xchange, int ychange);
 	bool is_king();
-	bool get_alignment();
+	bool getAlignment();
 	Piece(int initx, int inity, bool alignment);
 	~Piece();
 	

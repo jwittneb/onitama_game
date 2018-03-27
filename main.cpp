@@ -6,6 +6,7 @@
 #include <time.h>
 #include <string>
 #include <stdlib.h>
+#include "piece.h"
 
 using namespace std;
 
@@ -53,9 +54,23 @@ void initializeCards(vector<Card>& blueCards, vector<Card>& redCards, Card *&nex
 	nextCard = new Card(tempCard);
 }
 
+//outputs true if the action was legal, false otherwise
+bool executeAction(Board *theBoard, string nextPiece, string nextAction, int currPlayer,
+vector<Card> &blueCards, vector<Card> &redCards, Card *nextCard) {
+	//Figure out which piece the player wants to move
+	Piece *toMove = theBoard->getTileObject((int)nextPiece[0],(int)nextPiece[1]);
+
+	//Check to see that the piece belongs to the player who is trying to move it
+	if (toMove.getAlignment() != currPlayer) {
+		return 0;
+	}
+
+}
+
 int main() {
 	int currPlayer;
 	bool win = false;
+	bool legalMove = true;
 
 	Board *theBoard = Board::getInstance();
 	//The board is now in position to start the game
@@ -79,16 +94,34 @@ int main() {
 		cout << blueCards[i].getName() << endl;
 		cout << redCards[i].getName() << endl;
 	}
-	cout << nextCard->getName() << endl;
 	//Find out who is playing first based on the spare card
 
+	string nextAction;
+	string nextPiece;
 	//Main game loop
-//	while (true) {
+	while (true) {
 		//get the current player's action
-//		Action nextAction = getAction(currPlayer);
+		//Action nextAction = getAction(currPlayer);
+
+		theBoard.printBoard();
+		cout << "Blue Cards: " << blueCards[0].getName() << "," << blueCards[1].getName() << endl;
+		cout << "Red Cards: " << redCards[0].getName() << "," << redCards[1].getName() << endl;
+		cout << "Spare Card: " << nextCard->getName() << endl;
+		if (currPlayer == blue) {
+			cout << "It is blue's turn" << endl;
+		} else {
+			cout << "It is red's turn" << endl;
+		}
+		cout << "Piece to Move: ";
+		cin >> nextPiece;
+		cout << "Input Action: ";
+		cin >> nextAction;
+		
 		
 		//execute the action requested, check if win condition achieved by the current player
-//		win = executeAction(nextAction,currPlayer);
+		legalMove = executeAction(theBoard,nextPiece,nextAction,currPlayer,blueCards,redCards,nextCard);
+//		win = theBoard.checkWin();
+
 //		if (win) {
 //			break;
 //		}

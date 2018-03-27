@@ -27,7 +27,7 @@ class Board {
 	}
 
 	void move_piece(int initRow, int initCol, int endRow, int endCol);
-	Piece *get_tile_object(int row, int col);	
+	Piece *getTileObject(int row, int col);	
 	void print_board();
 };
 
