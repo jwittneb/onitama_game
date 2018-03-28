@@ -7,6 +7,7 @@
 #include <string>
 #include <stdlib.h>
 #include "piece.h"
+#include <sstream>
 
 using namespace std;
 
@@ -55,16 +56,27 @@ void initializeCards(vector<Card>& blueCards, vector<Card>& redCards, Card *&nex
 }
 
 //outputs true if the action was legal, false otherwise
-bool executeAction(Board *theBoard, string nextPiece, string nextAction, int currPlayer,
+bool executeAction(Board *theBoard, string nextPiece, string nextAction, int nextActionNum, int currPlayer,
 vector<Card> &blueCards, vector<Card> &redCards, Card *nextCard) {
+	Card *swap;
+
 	//Figure out which piece the player wants to move
 	Piece *toMove = theBoard->getTileObject((int)nextPiece[0],(int)nextPiece[1]);
+	cout << "OKAY" << endl;
 
 	//Check to see that the piece belongs to the player who is trying to move it
-	if (toMove.getAlignment() != currPlayer) {
+	if (toMove->getAlignment() != currPlayer) {
 		return 0;
+	} else {
+		for (int i=0; i<2; ++i) {
+			cout << "GOOD" << endl;
+	//		if (blueCards[i].getName() == nextAction) {
+	//			theBoard->movePiece((int)nextPiece[0],(int)nextPiece[1],(blueCards[i].getAvailableMoves())[nextActionNum].x,(blueCards[i].getAvailableMoves())[nextActionNum].y);
+	//		} else if (redCards[i].getName() == nextAction) {
+	//			theBoard->movePiece((int)nextPiece[0],(int)nextPiece[1],(redCards[i].getAvailableMoves())[nextActionNum].x,(redCards[i].getAvailableMoves())[nextActionNum].y);	
+	//		}
+		}
 	}
-
 }
 
 int main() {
@@ -98,12 +110,15 @@ int main() {
 
 	string nextAction;
 	string nextPiece;
+	int nextActionNum;
+	string temp;
+
 	//Main game loop
 	while (true) {
 		//get the current player's action
 		//Action nextAction = getAction(currPlayer);
 
-		theBoard.printBoard();
+		theBoard->printBoard();
 		cout << "Blue Cards: " << blueCards[0].getName() << "," << blueCards[1].getName() << endl;
 		cout << "Red Cards: " << redCards[0].getName() << "," << redCards[1].getName() << endl;
 		cout << "Spare Card: " << nextCard->getName() << endl;
@@ -114,12 +129,18 @@ int main() {
 		}
 		cout << "Piece to Move: ";
 		cin >> nextPiece;
-		cout << "Input Action: ";
+		cout << endl;
+		cout << "Card to Use: ";
 		cin >> nextAction;
-		
+		cout << "Action to Use: ";
+		cin >> temp;
+		cout << endl;
+		stringstream ss(temp);
+		ss >> nextActionNum;
 		
 		//execute the action requested, check if win condition achieved by the current player
-		legalMove = executeAction(theBoard,nextPiece,nextAction,currPlayer,blueCards,redCards,nextCard);
+		legalMove = executeAction(theBoard,nextPiece,nextAction,nextActionNum,currPlayer,blueCards,redCards,nextCard);
+	}
 //		win = theBoard.checkWin();
 
 //		if (win) {

@@ -25,7 +25,7 @@ class Card {
 	public:
 	Card(string cardName);
 	string getName();
-	vector <Pos>* getAvailableMoves();
+	vector <Pos> getAvailableMoves();
 	bool getColor();
 };
 

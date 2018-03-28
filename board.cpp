@@ -30,7 +30,7 @@ Piece *Board::getTileObject(int row, int col) {
 
 //Function to move pieces, does not do checking that you are moving your own pieces, which should be
 //checked in the player move functions
-void Board::move_piece(int initrow, int initcol, int deltax, int deltay) {
+void Board::movePiece(int initrow, int initcol, int deltax, int deltay) {
 	if (tiles[initrow][initcol]==0) {
 		std::cout << "Attempting to move from an empty location" << std::endl;	
 	} else {
@@ -47,23 +47,23 @@ void Board::move_piece(int initrow, int initcol, int deltax, int deltay) {
 // r -> red pawn
 // B -> blue king
 // R -> red king
-void Board::print_board() {
+void Board::printBoard() {
 	for (int i=0; i<boardHeight; ++i) {
 		for (int j=0; j<boardWidth; ++j) {
 			Piece *toPrint = getTileObject(i,j);
 			if (toPrint == 0) {
 				std::cout << 0;
 			} else {
-				if ((toPrint->get_alignment() == 0) && (toPrint->is_king() == 0)) {
+				if ((toPrint->getAlignment() == 0) && (toPrint->is_king() == 0)) {
 					std::cout << "b";
 				}
-				if ((toPrint->get_alignment() == 1) && (toPrint->is_king() == 0)) {
+				if ((toPrint->getAlignment() == 1) && (toPrint->is_king() == 0)) {
 					std::cout << "r";
 				}
-				if ((toPrint->get_alignment() == 0) && (toPrint->is_king() == 1)) {
+				if ((toPrint->getAlignment() == 0) && (toPrint->is_king() == 1)) {
 					std::cout << "B";
 				}
-				if ((toPrint->get_alignment() == 1) && (toPrint->is_king() == 1)) {
+				if ((toPrint->getAlignment() == 1) && (toPrint->is_king() == 1)) {
 					std::cout << "R";
 				}
 			}

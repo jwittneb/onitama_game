@@ -100,8 +100,8 @@ Card::Card(std::string cardName) {
 	availableMoves = cardMoves;
 }
 
-vector<Pos> *Card::getAvailableMoves() {
-	return &availableMoves;
+vector<Pos> Card::getAvailableMoves() {
+	return availableMoves;
 }
 
 string Card::getName() {

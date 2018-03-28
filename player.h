@@ -12,4 +12,4 @@ class Player {
 	Action getAction();
 };
 
-#ifndef
+#endif
