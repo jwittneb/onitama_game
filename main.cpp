@@ -70,11 +70,11 @@ vector<Card> &blueCards, vector<Card> &redCards, Card *nextCard) {
 	} else {
 		for (int i=0; i<2; ++i) {
 			cout << "GOOD" << endl;
-	//		if (blueCards[i].getName() == nextAction) {
-	//			theBoard->movePiece((int)nextPiece[0],(int)nextPiece[1],(blueCards[i].getAvailableMoves())[nextActionNum].x,(blueCards[i].getAvailableMoves())[nextActionNum].y);
-	//		} else if (redCards[i].getName() == nextAction) {
-	//			theBoard->movePiece((int)nextPiece[0],(int)nextPiece[1],(redCards[i].getAvailableMoves())[nextActionNum].x,(redCards[i].getAvailableMoves())[nextActionNum].y);	
-	//		}
+			if (blueCards[i].getName() == nextAction) {
+				theBoard->movePiece((int)nextPiece[0],(int)nextPiece[1],(blueCards[i].getAvailableMoves())[nextActionNum].x,(blueCards[i].getAvailableMoves())[nextActionNum].y);
+			} else if (redCards[i].getName() == nextAction) {
+				theBoard->movePiece((int)nextPiece[0],(int)nextPiece[1],(redCards[i].getAvailableMoves())[nextActionNum].x,(redCards[i].getAvailableMoves())[nextActionNum].y);	
+			}
 		}
 	}
 }
